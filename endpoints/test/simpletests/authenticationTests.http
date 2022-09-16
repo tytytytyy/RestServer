@@ -1,0 +1,20 @@
+
+http://localhost:8080/User
+
+###
+POST http://localhost:8080/authenticate/login
+Content-Type: application/json
+
+{
+
+    "userID" : "1User",
+    "password" : "Popo123"
+
+}
+
+###
+
+POST http://localhost:8080/authenticate/loginBasic
+Authorization: Basic 123
+
+

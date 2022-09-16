@@ -1,0 +1,119 @@
+// Rufe alle User ab. Zu Beginn sollten keine User in der Datenbank sein.
+###
+http://localhost:8080/publicUsers
+
+// Lege ersten User an, der Administrator ist
+###
+
+POST http://localhost:8080/publicUsers/
+Content-Type: application/json
+
+{
+"userID": "admin",
+"userName": "Udo Müller",
+"password": "123",
+"isAdministrator": true
+}
+
+// Rufe User mit UserID admin ab. Im Anschluss werden die Daten des Users ein-schließlich des gehashten Passworts geprüft.
+###
+POST http://localhost:8080/publicUsers/getByUserID
+Content-Type: application/json
+
+{
+"userID": "admin"
+}
+
+
+//Löschen eines Users
+###
+POST http://localhost:8080/publicUsers/delete
+Content-Type: application/json
+
+{
+"userID": "admin"
+}
+
+
+
+// Lege zweiten User an. Prüfe UserID und UserName, ob die Angaben korrekt sind.
+###
+POST http://localhost:8080/publicUsers
+Content-Type: application/json
+
+{
+"password" : "asdf",
+"userName" : "Manfred Mustermann",
+"isAdministrator" : "false",
+"userID" : "manfredTest"
+}
+
+//Löschen eines Users
+###
+POST http://localhost:8080/publicUsers/delete
+Content-Type: application/json
+
+{
+"userID": "manfredTest"
+}
+
+
+// Rufe User mit UserID admin ab. Im Anschluss werden die Daten des Users ein-schließlich des gehashten Passworts geprüft.
+###
+POST http://localhost:8080/publicUsers/getByUserID
+Content-Type: application/json
+
+{
+"userID": "manfredTest"
+}
+
+
+
+//Löschen eines Users
+###
+POST http://localhost:8080/publicUser/delete
+Content-Type: application/json
+
+{
+"userID": "manfred"
+}
+
+
+// Lege zweiten User an. Prüfe UserID und UserName, ob die Angaben korrekt sind.
+###
+POST http://localhost:8080/publicUser
+Content-Type: application/json
+
+{
+"userID": "manfred",
+"userName": "Manfred Mustermann",
+"password": "asdf"
+}
+
+
+// Ändere beim zweiten User den User-Name. Zur Selektion des Users ver-wende die userID.
+###
+PUT http://localhost:8080/publicUser
+Content-Type: application/json
+
+{
+"userID": "manfredTest",
+"userName": "Manfred hh",
+"password": "ampeldampel"
+}
+
+// Ändere beim zweiten User den User-Name. Zur Selektion des Users ver-wende die userID.
+###
+PUT http://localhost:8080/publicUser
+Content-Type: application/json
+
+{
+"userID": "manfredTest",
+"userName": "Manfred 1312"
+}
+
+// Rufe alle User ab. Es sollten 2 User zurückgegeben werden.
+###
+http://localhost:8080/publicUser
+
+
